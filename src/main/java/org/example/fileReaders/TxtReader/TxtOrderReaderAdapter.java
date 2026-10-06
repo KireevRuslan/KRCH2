@@ -1,4 +1,4 @@
-package org.example.fileReaders;
+package org.example.fileReaders.TxtReader;
 
 import org.example.interfaces.OrderReadInterface;
 

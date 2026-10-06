@@ -1,4 +1,4 @@
-package org.example.fileReaders;
+package org.example.fileReaders.TxtReader;
 
 import java.io.IOException;
 import java.nio.file.Files;
