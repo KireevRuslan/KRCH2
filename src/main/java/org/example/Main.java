@@ -1,15 +1,26 @@
 package org.example;
 
 import org.example.fileReaders.ExtensionlessReader.ExtensionlessFileReader;
-import org.example.sortingOrders.OrderRecorder;
+import org.example.fileReaders.OrderRecorder;
+import org.example.fileReaders.TxtReader.TxtFileReader;
+import org.example.sortingOrders.OrderSort;
 
 import java.util.LinkedList;
 
 public class Main {
     static void main(String[] args) {
-        ExtensionlessFileReader reader = new ExtensionlessFileReader();
-        LinkedList<OrderRecorder>  orders = reader.readExtensionless("discount_day_without_ext");
+//        ExtensionlessFileReader reader = new ExtensionlessFileReader();
+//        LinkedList<OrderRecorder>  orders = reader.readExtensionless("discount_day_without_ext");
+//
+//        for (OrderRecorder order : orders) {
+//            System.out.println(order);
 
+        TxtFileReader reader = new TxtFileReader();
+        LinkedList<OrderRecorder> orders = reader.readTxt("discount_day.txt");
+
+        OrderSort orderSort = new OrderSort();
+
+        LinkedList<OrderRecorder> sortedOrders = orderSort.sort(orders);
         for (OrderRecorder order : orders) {
             System.out.println(order);
         }

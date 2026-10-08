@@ -1,7 +1,7 @@
 package org.example.fileReaders.ExtensionlessReader;
 
 import org.example.interfaces.OrderReadInterface;
-import org.example.sortingOrders.OrderRecorder;
+import org.example.fileReaders.OrderRecorder;
 
 import java.util.LinkedList;
 

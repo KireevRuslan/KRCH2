@@ -1,6 +1,6 @@
 package org.example.fileReaders.TxtReader;
 
-import org.example.sortingOrders.OrderRecorder;
+import org.example.fileReaders.OrderRecorder;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -12,28 +12,28 @@ import java.util.List;
 
 public class TxtFileReader {
 
-    public LinkedList<OrderRecorder> readTxt(String filePath){
+    public LinkedList<OrderRecorder> readTxt(String filePath) {
 
         LinkedList<OrderRecorder> orderList = new LinkedList<>();
         try {
             List<String> orderLine = Files.readAllLines(Path.of(filePath));
 
-            for (String line : orderLine){
-                if (line.trim().isEmpty()){
+            for (String line : orderLine) {
+                if (line.trim().isEmpty()) {
                     continue;
                 }
 
-                String[] parts = line.split("|");
+                String[] parts = line.split("\\|");
 
                 LocalDateTime dateOrder = LocalDateTime.parse(parts[0].trim());
                 String corpName = parts[1].trim();
-                int concreteQuantity  = Integer.parseInt(parts[2].trim());
+                int concreteQuantity = Integer.parseInt(parts[2].trim());
 
                 OrderRecorder order = new OrderRecorder(dateOrder, corpName, concreteQuantity);
 
                 orderList.add(order);
             }
-            } catch (IOException e) {
+        } catch (IOException e) {
             throw new RuntimeException("Не удалось прочитать файл: " + filePath, e);
         }
         return orderList;

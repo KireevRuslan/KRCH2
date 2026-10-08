@@ -1,6 +1,6 @@
 package org.example.fileReaders.ExtensionlessReader;
 
-import org.example.sortingOrders.OrderRecorder;
+import org.example.fileReaders.OrderRecorder;
 
 import java.io.IOException;
 import java.nio.file.Files;
