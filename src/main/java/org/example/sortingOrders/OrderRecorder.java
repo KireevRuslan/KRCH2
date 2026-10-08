@@ -1,13 +1,14 @@
 package org.example.sortingOrders;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
-public abstract class OrderRecorder {
+public class OrderRecorder {
     protected final LocalDateTime dateOrder;
     protected final String corpName;
     protected final int concreteQuantity;
 
-    protected OrderRecorder(LocalDateTime dateOrder, String corpName, int concreteQuantity) {
+    public OrderRecorder(LocalDateTime dateOrder, String corpName, int concreteQuantity) {
         this.dateOrder = dateOrder;
         this.corpName = corpName;
         this.concreteQuantity = concreteQuantity;
@@ -27,6 +28,7 @@ public abstract class OrderRecorder {
 
     @Override
     public String toString() {
-        return dateOrder + " " + corpName + " " + concreteQuantity;
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        return dateOrder.format(dtf) + " " + corpName + " " + concreteQuantity;
     }
 }

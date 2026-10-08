@@ -1,6 +1,9 @@
 package org.example.fileReaders.TxtReader;
 
 import org.example.interfaces.OrderReadInterface;
+import org.example.sortingOrders.OrderRecorder;
+
+import java.util.LinkedList;
 
 public class TxtOrderReaderAdapter implements OrderReadInterface {
 
@@ -12,7 +15,7 @@ public class TxtOrderReaderAdapter implements OrderReadInterface {
     }
 
     @Override
-    public String read(String filePath) {
+    public LinkedList<OrderRecorder> read(String filePath) {
         return txtReader.readTxt(filePath);
     }
 }

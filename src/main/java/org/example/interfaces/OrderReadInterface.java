@@ -1,8 +1,12 @@
 package org.example.interfaces;
 
+import org.example.sortingOrders.OrderRecorder;
+
+import java.util.LinkedList;
+
 public interface OrderReadInterface {
 
-    String read(String filePath);
+    LinkedList<OrderRecorder> read(String filePath);
 
 
 }
