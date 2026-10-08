@@ -1,8 +1,9 @@
 package org.example;
 
-import org.example.fileReaders.ExtensionlessReader.ExtensionlessFileReader;
-import org.example.fileReaders.OrderRecorder;
+import org.example.orderCounts.OrderCount;
+import org.example.recorders.OrderRecorder;
 import org.example.fileReaders.TxtReader.TxtFileReader;
+import org.example.recorders.SumOrderRecorder;
 import org.example.sortingOrders.OrderSort;
 
 import java.util.LinkedList;
@@ -22,10 +23,12 @@ public class Main {
 
         LinkedList<OrderRecorder> sortedOrders = orderSort.sort(orders);
         for (OrderRecorder order : orders) {
-            System.out.println(order);
+            //System.out.println(order);
+
         }
 
-
+        OrderCount sumOrder = new OrderCount();
+        LinkedList<SumOrderRecorder> result = sumOrder.count(orders);
 
 
     }

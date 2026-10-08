@@ -1,6 +1,6 @@
 package org.example.interfaces;
 
-import org.example.fileReaders.OrderRecorder;
+import org.example.recorders.OrderRecorder;
 
 import java.util.LinkedList;
 

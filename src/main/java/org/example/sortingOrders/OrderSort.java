@@ -1,6 +1,6 @@
 package org.example.sortingOrders;
 
-import org.example.fileReaders.OrderRecorder;
+import org.example.recorders.OrderRecorder;
 import org.example.interfaces.OrderSortInterface;
 
 import java.util.Comparator;

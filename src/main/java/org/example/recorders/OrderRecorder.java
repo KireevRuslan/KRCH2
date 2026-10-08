@@ -1,9 +1,11 @@
-package org.example.fileReaders;
+package org.example.recorders;
+
+import org.example.interfaces.RecorderInterface;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class OrderRecorder {
+public class OrderRecorder implements RecorderInterface {
     protected final LocalDateTime dateOrder;
     protected final String corpName;
     protected final int concreteQuantity;
@@ -18,6 +20,7 @@ public class OrderRecorder {
         return dateOrder;
     }
 
+    @Override
     public String getCorpName() {
         return corpName;
     }
