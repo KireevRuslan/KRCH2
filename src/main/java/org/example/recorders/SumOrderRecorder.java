@@ -23,4 +23,9 @@ public class SumOrderRecorder implements RecorderInterface {
     public long getSumOrder() {
         return sumOrder;
     }
+
+    @Override
+    public String toString() {
+        return corpName + " " + sumOrder;
+    }
 }

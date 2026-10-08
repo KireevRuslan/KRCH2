@@ -7,10 +7,10 @@ import org.example.recorders.SumOrderRecorder;
 import java.util.LinkedList;
 
 public class OrderCount implements OrderCounterInterface {
-
-    public LinkedList<SumOrderRecorder> count (LinkedList<OrderRecorder> orderList, int concretePrice) {
+    @Override
+    public LinkedList<SumOrderRecorder> count(LinkedList<OrderRecorder> orderList, int concretePrice) {
         LinkedList<SumOrderRecorder> result = new LinkedList<>();
-        for  (OrderRecorder order : orderList) {
+        for (OrderRecorder order : orderList) {
             int quantity = order.getConcreteQuantity();
             long sumOrder = quantity * concretePrice;
 
