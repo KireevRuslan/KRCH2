@@ -6,6 +6,7 @@ import org.example.recorders.OrderRecorder;
 import org.example.fileReaders.TxtReader.TxtFileReader;
 import org.example.recorders.SaleOrderRecorder;
 import org.example.recorders.SumOrderRecorder;
+import org.example.resultWriter.TxtWriter;
 import org.example.sortingOrders.OrderSort;
 import org.example.trackingMultipleOrders.MultipleOrdersTracking;
 
@@ -23,6 +24,19 @@ public class Main {
 //        for (OrderRecorder order : orders) {
 //            System.out.println(order);
 //
+        LinkedList<SaleOrderRecorder> saleList = getSaleOrderRecorders();
+
+        MultipleOrdersTracking converter = new MultipleOrdersTracking();
+        HashMap<String,Long> orderMap = converter.convert(saleList);
+        for (var entry : orderMap.entrySet()){
+            //System.out.println(entry.getKey()+" - "+entry.getValue());
+        }
+
+        TxtWriter writer = new TxtWriter();
+        writer.write(orderMap);
+    }
+
+    private static LinkedList<SaleOrderRecorder> getSaleOrderRecorders() {
         TxtFileReader reader = new TxtFileReader();
         LinkedList<OrderRecorder> orders = reader.readTxt("discount_day.txt");
         OrderSort orderSort = new OrderSort();
@@ -47,11 +61,7 @@ public class Main {
         for (SaleOrderRecorder sales : saleList) {
             //System.out.println(sales);
         }
-
-        MultipleOrdersTracking converter = new MultipleOrdersTracking();
-        HashMap<String,Long> orderMap = converter.convert(saleList);
-        for (var entry : orderMap.entrySet()){
-            //System.out.println(entry.getKey()+" - "+entry.getValue());
-        }
+        return saleList;
     }
 }
+
