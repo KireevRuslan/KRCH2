@@ -6,8 +6,13 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class TxtWriter {
+    private final String filePath;
+
+    public TxtWriter(String filePath) {
+        this.filePath = filePath;
+    }
     public void write(HashMap<String, Long> orderMap) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("OrdersWithSale.txt"))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
             for (var entry : orderMap.entrySet()) {
                 writer.write(entry.getKey() + " " + entry.getValue() + " руб.");
                 writer.newLine();
@@ -15,7 +20,7 @@ public class TxtWriter {
 
         } catch (
                 IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Ошибка записи файла", e);
         }
     }
 }

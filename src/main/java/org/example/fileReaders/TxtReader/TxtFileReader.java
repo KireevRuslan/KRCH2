@@ -30,7 +30,17 @@ public class TxtFileReader {
                     }
 
                     String[] parts = line.split("\\|");
-                    LocalDateTime dateOrder = LocalDateTime.parse(parts[0].trim());
+                    if (parts.length != 3) {
+                        System.out.println("Ошибка: должно быть 3 поля: " + line);
+                        continue;
+                    }
+                    LocalDateTime dateOrder;
+                    try {
+                        dateOrder = LocalDateTime.parse(parts[0].trim());
+                    } catch (java.time.format.DateTimeParseException e) {
+                        System.out.println("Неверный формат даты: " + parts[0]);
+                        continue;
+                    }
                     String corpName = parts[1].trim();
                     int concreteQuantity = Integer.parseInt(parts[2].trim());
 

@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.fileReaders.ExtensionlessReader.ExtensionlessFileReader;
+import org.example.fileReaders.TxtReader.TxtFileReader;
 import org.example.orderCounts.OrderCount;
 import org.example.sales.SaleOrder;
 import org.example.recorders.OrderRecorder;
@@ -21,16 +22,16 @@ public class Main {
         LinkedList<SaleOrderRecorder> saleList = getSaleOrderRecorders();
         MultipleOrdersTracking converter = new MultipleOrdersTracking();
         HashMap<String, Long> orderMap = converter.convert(saleList);
-        TxtWriter writer = new TxtWriter();
+        TxtWriter writer = new TxtWriter("OrdersWithSale.txt");
         writer.write(orderMap);
     }
 
     private static LinkedList<SaleOrderRecorder> getSaleOrderRecorders() {
 
-//        TxtFileReader reader = new TxtFileReader();
-        ExtensionlessFileReader reader = new ExtensionlessFileReader();
-//        LinkedList<OrderRecorder> orders = reader.readTxt("discount_day.txt");
-        LinkedList<OrderRecorder> orders = reader.readExtensionless("discount_day_without_ext");
+        TxtFileReader reader = new TxtFileReader();
+//        ExtensionlessFileReader reader = new ExtensionlessFileReader();
+        LinkedList<OrderRecorder> orders = reader.readTxt("discount_day.txt");
+//        LinkedList<OrderRecorder> orders = reader.readExtensionless("discount_day_without_ext");
         OrderSort orderSort = new OrderSort();
         LinkedList<OrderRecorder> sortedOrders = orderSort.sort(orders);
         OrderCount sumOrder = new OrderCount();
