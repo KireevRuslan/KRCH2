@@ -2,9 +2,8 @@ package org.example;
 
 import org.example.fileReaders.ExtensionlessReader.ExtensionlessFileReader;
 import org.example.orderCounts.OrderCount;
-import org.example.orderCounts.SaleOrder;
+import org.example.sales.SaleOrder;
 import org.example.recorders.OrderRecorder;
-import org.example.fileReaders.TxtReader.TxtFileReader;
 import org.example.recorders.SaleOrderRecorder;
 import org.example.recorders.SumOrderRecorder;
 import org.example.resultWriter.TxtWriter;

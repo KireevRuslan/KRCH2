@@ -1,4 +1,4 @@
 package org.example.sales;
 
-public class SalesConcrete {
+public class SaleOrderTest {
 }
