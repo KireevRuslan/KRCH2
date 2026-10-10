@@ -20,12 +20,25 @@ public class ExtensionlessFileReader {
                 if (line.trim().isEmpty()) {
                     continue;
                 }
-                String[] parts = line.split("#");
-                LocalDateTime dateOrder = LocalDateTime.parse(parts[0].trim());
-                String corpName = parts[1].trim();
-                int concreteQuantity = Integer.parseInt(parts[2].trim());
-                OrderRecorder order = new OrderRecorder(dateOrder, corpName, concreteQuantity);
-                orderList.add(order);
+                try {
+                    if (line.contains("|")) {
+                        throw new IllegalArgumentException(
+                                "Неправильный разделитель: " + line
+                        );
+                    }
+
+                    String[] parts = line.split("#");
+                    LocalDateTime dateOrder = LocalDateTime.parse(parts[0].trim());
+                    String corpName = parts[1].trim();
+                    int concreteQuantity = Integer.parseInt(parts[2].trim());
+
+                    OrderRecorder order = new OrderRecorder(dateOrder, corpName, concreteQuantity);
+
+                    orderList.add(order);
+                } catch (IllegalArgumentException e) {
+                    System.out.println(e.getMessage());
+                }
+
 
             }
         } catch (IOException e) {

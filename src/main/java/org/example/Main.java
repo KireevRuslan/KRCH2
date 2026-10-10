@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.fileReaders.ExtensionlessReader.ExtensionlessFileReader;
 import org.example.orderCounts.OrderCount;
 import org.example.orderCounts.SaleOrder;
 import org.example.recorders.OrderRecorder;
@@ -17,50 +18,27 @@ import static org.example.interfaces.OrderCounterInterface.concretePrice;
 
 public class Main {
     static void main(String[] args) {
-//        ExtensionlessFileReader reader = new ExtensionlessFileReader();
-//        LinkedList<OrderRecorder>  orders = reader.readExtensionless("discount_day_without_ext");
-//        OrderSort orderSort = new OrderSort();
-//        LinkedList<OrderRecorder> sortedOrders = orderSort.sort(orders);
-//        for (OrderRecorder order : orders) {
-//            System.out.println(order);
-//
+
         LinkedList<SaleOrderRecorder> saleList = getSaleOrderRecorders();
-
         MultipleOrdersTracking converter = new MultipleOrdersTracking();
-        HashMap<String,Long> orderMap = converter.convert(saleList);
-        for (var entry : orderMap.entrySet()){
-            //System.out.println(entry.getKey()+" - "+entry.getValue());
-        }
-
+        HashMap<String, Long> orderMap = converter.convert(saleList);
         TxtWriter writer = new TxtWriter();
         writer.write(orderMap);
     }
 
     private static LinkedList<SaleOrderRecorder> getSaleOrderRecorders() {
-        TxtFileReader reader = new TxtFileReader();
-        LinkedList<OrderRecorder> orders = reader.readTxt("discount_day.txt");
+
+//        TxtFileReader reader = new TxtFileReader();
+        ExtensionlessFileReader reader = new ExtensionlessFileReader();
+//        LinkedList<OrderRecorder> orders = reader.readTxt("discount_day.txt");
+        LinkedList<OrderRecorder> orders = reader.readExtensionless("discount_day_without_ext");
         OrderSort orderSort = new OrderSort();
         LinkedList<OrderRecorder> sortedOrders = orderSort.sort(orders);
-        for (OrderRecorder order : orders) {
-            //System.out.println(order);
-
-        }
-
         OrderCount sumOrder = new OrderCount();
-
-        LinkedList<SumOrderRecorder> result =
-                sumOrder.count(sortedOrders, concretePrice);
-
-        for (SumOrderRecorder sum : result) {
-//            System.out.println(sum);
-        }
-
+        LinkedList<SumOrderRecorder> result = sumOrder.count(sortedOrders, concretePrice);
         SaleOrder saleOrder = new SaleOrder();
-
         LinkedList<SaleOrderRecorder> saleList = saleOrder.sale(result);
-        for (SaleOrderRecorder sales : saleList) {
-            //System.out.println(sales);
-        }
+
         return saleList;
     }
 }

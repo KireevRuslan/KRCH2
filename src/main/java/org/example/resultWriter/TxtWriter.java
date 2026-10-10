@@ -9,7 +9,7 @@ public class TxtWriter {
     public void write(HashMap<String, Long> orderMap) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("OrdersWithSale.txt"))) {
             for (var entry : orderMap.entrySet()) {
-                writer.write(entry.getKey() + " " + entry.getValue());
+                writer.write(entry.getKey() + " " + entry.getValue() + " руб.");
                 writer.newLine();
             }
 
