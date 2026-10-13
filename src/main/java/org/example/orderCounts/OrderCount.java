@@ -11,8 +11,8 @@ public class OrderCount implements OrderCounterInterface {
     public LinkedList<SumOrderRecorder> count(LinkedList<OrderRecorder> orderList, int concretePrice) {
         LinkedList<SumOrderRecorder> result = new LinkedList<>();
         for (OrderRecorder order : orderList) {
-            int quantity = Math.abs(order.getConcreteQuantity());
-            long sumOrder = quantity * concretePrice;
+            long quantity = Math.abs(order.getConcreteQuantity());
+            long sumOrder = Math.abs(quantity) * concretePrice;
 
             SumOrderRecorder sumRecorder = new SumOrderRecorder(order.getCorpName(), sumOrder);
             result.add(sumRecorder);

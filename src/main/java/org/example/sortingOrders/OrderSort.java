@@ -8,8 +8,10 @@ import java.util.LinkedList;
 
 public class OrderSort implements OrderSortInterface {
 
+    public static final Comparator<OrderRecorder>OrderComporator = Comparator.comparing(OrderRecorder::getDateOrder);
+
     public LinkedList<OrderRecorder> sort (LinkedList<OrderRecorder> orderList) {
-        orderList.sort(Comparator.comparing(OrderRecorder::getDateOrder));
+        orderList.sort(OrderComporator);
         return orderList;
     }
 

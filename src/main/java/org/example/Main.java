@@ -1,7 +1,10 @@
 package org.example;
 
 import org.example.fileReaders.ExtensionlessReader.ExtensionlessFileReader;
+import org.example.fileReaders.ExtensionlessReader.ExtensionlessOrderReaderAdapter;
 import org.example.fileReaders.TxtReader.TxtFileReader;
+import org.example.fileReaders.TxtReader.TxtOrderReaderAdapter;
+import org.example.interfaces.OrderReadInterface;
 import org.example.orderCounts.OrderCount;
 import org.example.sales.SaleOrder;
 import org.example.recorders.OrderRecorder;
@@ -28,10 +31,10 @@ public class Main {
 
     private static LinkedList<SaleOrderRecorder> getSaleOrderRecorders() {
 
-        TxtFileReader reader = new TxtFileReader();
-//        ExtensionlessFileReader reader = new ExtensionlessFileReader();
-        LinkedList<OrderRecorder> orders = reader.readTxt("discount_day.txt");
-//        LinkedList<OrderRecorder> orders = reader.readExtensionless("discount_day_without_ext");
+        OrderReadInterface reader = new TxtOrderReaderAdapter(new TxtFileReader());
+        //OrderReadInterface reader = new ExtensionlessOrderReaderAdapter(new ExtensionlessFileReader());
+        LinkedList<OrderRecorder> orders = reader.read("discount_day.txt");
+        //LinkedList<OrderRecorder> orders = reader.read("discount_day_without_ext");
         OrderSort orderSort = new OrderSort();
         LinkedList<OrderRecorder> sortedOrders = orderSort.sort(orders);
         OrderCount sumOrder = new OrderCount();
