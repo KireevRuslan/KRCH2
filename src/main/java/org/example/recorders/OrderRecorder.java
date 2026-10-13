@@ -1,7 +1,5 @@
 package org.example.recorders;
 
-import org.example.interfaces.RecorderInterface;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 

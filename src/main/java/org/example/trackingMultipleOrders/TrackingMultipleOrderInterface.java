@@ -1,4 +1,4 @@
-package org.example.interfaces;
+package org.example.trackingMultipleOrders;
 
 import org.example.recorders.SaleOrderRecorder;
 

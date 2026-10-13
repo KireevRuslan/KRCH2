@@ -1,6 +1,5 @@
 package org.example.sales;
 
-import org.example.interfaces.SalesInterface;
 import org.example.recorders.SaleOrderRecorder;
 import org.example.recorders.SumOrderRecorder;
 

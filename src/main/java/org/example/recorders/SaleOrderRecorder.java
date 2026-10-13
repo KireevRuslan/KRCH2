@@ -1,7 +1,5 @@
 package org.example.recorders;
 
-import org.example.interfaces.RecorderInterface;
-
 public class SaleOrderRecorder implements RecorderInterface {
     private final String corpName;
     private final long saleOrder;

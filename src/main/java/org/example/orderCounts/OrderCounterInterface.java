@@ -1,4 +1,4 @@
-package org.example.interfaces;
+package org.example.orderCounts;
 
 import org.example.recorders.OrderRecorder;
 import org.example.recorders.SumOrderRecorder;

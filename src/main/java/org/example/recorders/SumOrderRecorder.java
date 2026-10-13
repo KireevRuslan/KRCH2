@@ -1,9 +1,5 @@
 package org.example.recorders;
 
-import org.example.interfaces.RecorderInterface;
-
-import java.time.LocalDateTime;
-
 public class SumOrderRecorder implements RecorderInterface {
     private final String corpName;
     private final long sumOrder;

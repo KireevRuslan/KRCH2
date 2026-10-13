@@ -1,10 +1,8 @@
 package org.example;
 
-import org.example.fileReaders.ExtensionlessReader.ExtensionlessFileReader;
-import org.example.fileReaders.ExtensionlessReader.ExtensionlessOrderReaderAdapter;
 import org.example.fileReaders.TxtReader.TxtFileReader;
 import org.example.fileReaders.TxtReader.TxtOrderReaderAdapter;
-import org.example.interfaces.OrderReadInterface;
+import org.example.fileReaders.OrderReadInterface;
 import org.example.orderCounts.OrderCount;
 import org.example.sales.SaleOrder;
 import org.example.recorders.OrderRecorder;
@@ -17,7 +15,7 @@ import org.example.trackingMultipleOrders.MultipleOrdersTracking;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-import static org.example.interfaces.OrderCounterInterface.concretePrice;
+import static org.example.orderCounts.OrderCounterInterface.concretePrice;
 
 public class Main {
     static void main(String[] args) {

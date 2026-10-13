@@ -1,7 +1,6 @@
 package org.example.orderCounts;
 
 import org.example.recorders.OrderRecorder;
-import org.example.interfaces.OrderCounterInterface;
 import org.example.recorders.SumOrderRecorder;
 
 import java.util.LinkedList;
